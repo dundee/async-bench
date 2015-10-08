@@ -25,24 +25,6 @@ pypy-trollius:
 pypy-asyncore:
 	pypy asyncore_hello.py
 
-pypy3-asyncore:
-	pypy3 asyncore_hello.py
-
-pypy3-trollius:
-	pypy3 asyncio_hello.py
-
-nuitka:
-	nuitka --recurse-all asyncio_hello.py
-	./asyncio_hello.exe
-
-cython2:
-	cythonize -bi asyncio_hello.py
-	python2 -c "import asyncio_hello"
-
-cython3:
-	cythonize -3 -bi asyncio_hello.py
-	python3 -c "import asyncio_hello"
-
 go:
 	go run http.go
 
