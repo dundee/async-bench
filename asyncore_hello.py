@@ -5,9 +5,9 @@ class EchoHandler(asyncore.dispatcher_with_send):
 
     def handle_read(self):
         data = self.recv(8192)
-        if data in ('\r\n', '\n') or '\r\n\r\n' in data:
-            self.send('HTTP/1.1 200 OK\n\n')
-            self.send('Hello world!')
+        if b'\r\n\r\n' in data:
+            self.send(b'HTTP/1.1 200 OK\n\n')
+            self.send(b'Hello world!')
             self.close()
 
 class EchoServer(asyncore.dispatcher):
