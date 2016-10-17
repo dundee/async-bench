@@ -28,6 +28,9 @@ pypy-asyncore:
 pypy3-asyncore:
 	pypy3 asyncore_hello.py
 
+python-uvloop:
+	python uvloop_hello.py
+
 go:
 	go run http.go
 
