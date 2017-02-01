@@ -1,8 +1,11 @@
 SHELL = /usr/bin/bash
 COUNT=10000
 
-test:
+test-ab:
 	@for i in {1..100}; do bash -c "ab -c $$i -n $(COUNT) http://127.0.0.1:9000/ 2>/dev/null | grep 'Requests per second' | tr -s ' ' | cut -d' ' -f4"; done
+
+test-wrk:
+	@for i in {1..100}; do bash -c "wrk -c $$i -d 1 -s pipeline.lua http://127.0.0.1:9000/ 2>/dev/null | grep 'Requests/sec' | tr -s ' ' | cut -d' ' -f2"; done
 
 python3-aiohttp:
 	python3 aiohttp_hello.py
@@ -30,6 +33,12 @@ pypy3-asyncore:
 
 python-uvloop:
 	python uvloop_hello.py
+
+python3-japronto:
+	python japronto_hello.py
+
+python3-meinheld:
+	python meinheld_hello.py
 
 go:
 	go run http.go
